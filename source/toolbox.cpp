@@ -12008,46 +12008,34 @@ void apply_settings(char *option, int val, u8 _forced)
 	if(!strcmp(option, "cfw_settings"))
 	{
 
-	if( exist((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.org") )
+	if( exist((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.off") )
 		cfw_settings=1;	//enabled
-	else if( exist((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.cfw") )
+	else if( exist((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.on") )
 		cfw_settings=0;	//disabled
 
-			if(cfw_settings==1 && exist((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.org") )
+			if(cfw_settings==1 && exist((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml") 
+							   && exist((char*)"/dev_rebug/vsh/module/xai_plugin.sprx"))
 			{
 				rename((char*)"/dev_rebug/vsh/module/xai_plugin.sprx",
 					(char*)"/dev_rebug/vsh/module/xai_plugin.sprx.bak");
-				rename((char*)"/dev_rebug/vsh/resource/xai_plugin.rco",
-					(char*)"/dev_rebug/vsh/resource/xai_plugin.rco.bak");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.cfw");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.org",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.cfw");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.org",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml");
+				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml",
+					(char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.on");
+				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.off",
+					(char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml");
 			strcpy(status, "XMB CFW settings MOD is Disabled. The plugin will be unloaded on next boot.");
 			auto_reboot = 1;
 			}
 			else
-			if(cfw_settings==0  && exist((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.cfw")
+			if(cfw_settings==0  && exist((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml")
 								&& exist((char*)"/dev_rebug/vsh/module/xai_plugin.sprx.bak")
-								&& exist((char*)"/dev_rebug/vsh/resource/xai_plugin.rco.bak")
 				)
 			{
 				rename((char*)"/dev_rebug/vsh/module/xai_plugin.sprx.bak",
 					(char*)"/dev_rebug/vsh/module/xai_plugin.sprx");
-				rename((char*)"/dev_rebug/vsh/resource/xai_plugin.rco.bak",
-					(char*)"/dev_rebug/vsh/resource/xai_plugin.rco");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.org");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml.cfw",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network.xml");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.org");
-				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml.cfw",
-					(char*)"/dev_rebug/vsh/resource/explore/xmb/category_network_tool2.xml");
+				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml",
+					(char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.off");
+				rename((char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml.on",
+					(char*)"/dev_rebug/vsh/resource/explore/xmb/cfw_settings.xml");
 			strcpy(status, "XMB CFW settings MOD is Enabled. The feature will be available via Network Column on XMB.");
 			auto_reboot = 1;
 			}
