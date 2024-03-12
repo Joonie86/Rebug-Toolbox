@@ -804,11 +804,17 @@ void set_qa_flag()
 
 /************************************************************************************************************************/
 	
+	seed[21] |= 0x7F; /* BDP CONTROL ALL ENABLE DISABLE */
+	seed[23] |= 0x7F; /* CONNECT_CONTROL ALL ENABLE DISABLE */
+	seed[36] |= 0xF; /* QA_FLAG_RESERVED_FOR_VSH ALL */
 	seed[39] |= 0x1; /* QA_FLAG_EXAM_API_ENABLE */
 	seed[39] |= 0x2; /* QA_FLAG_QA_MODE_ENABLE */
-	seed[47] |= 0x2;
-	seed[47] |= 0x4; /* checked by lv2_kernel.self and sys_init_osd.self */
-			 /* can run sys_init_osd.self from /app_home ? */
+	seed[43] |= 0x1; /* System Debug */
+	seed[43] |= 0x2; /* LV2 System App Debug */
+	seed[44] |= 0x9; /* Advanced Token Flag!! */
+	seed[47] |= 0x1; /* QA_FLAG_SPECIAL_I */
+	seed[47] |= 0x2; /* QA_FLAG_ALLOW_TEST_APP */
+	seed[47] |= 0x4; /* QA_FLAG_ALLOW_REMOTE_SPAWN */
 	seed[51] |= 0x1; /* QA_FLAG_ALLOW_NON_QA */
 	seed[51] |= 0x2; /* QA_FLAG_FORCE_UPDATE */
 	
